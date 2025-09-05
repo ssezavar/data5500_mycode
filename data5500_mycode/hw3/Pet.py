@@ -3,7 +3,7 @@
 
 # Pet.py
 class Pet:
-    # متغیر کلاسی برای طول عمر گونه‌ها
+
     species_lifespans = {
         "dog": 13,
         "cat": 15,
