@@ -1,0 +1,51 @@
+Sara Sezavar Dokhtfaroughi -- A02422030 -- DATA6500 -- Fall 2025
+HW7 -- Essay
+
+Title: Deleting a Node from a Binary Search Tree (BST)
+
+Overview
+A BST maintains this invariant: for any node N, all keys in N.left are < N.key, and all keys in N.right are ≥ N.key (or > N.key, depending on the duplicate policy). A correct delete must remove the key and preserve this ordering.
+
+Deletion Cases
+1) Node has no children (leaf):
+   Action: remove the node by returning None to its parent link.
+   Why correct: no subtrees to relocate; BST property stays intact.
+
+2) Node has exactly one child:
+   Action: replace the node with its single child (return left or right).
+   Why correct: the child’s subtree is already valid for that position.
+
+3) Node has two children:
+   Action: replace the node’s key with either its in-order successor (minimum in the right subtree) or its in-order predecessor (maximum in the left subtree). Then delete that successor/predecessor node from the corresponding subtree (which becomes Case 0 or 1).
+   Why correct: the successor is the smallest key larger than the current key, so ordering on both sides remains valid.
+
+High-Level Recursive Outline (conceptual)
+- If subtree is None: nothing to delete; return it.
+- If key < root.key: delete in left subtree.
+- Else if key > root.key: delete in right subtree.
+- Else (found node):
+  * If no left child: return root.right.
+  * Else if no right child: return root.left.
+  * Else: find successor, copy its key into root, then delete successor from root.right.
+- Return the (possibly updated) root after each step to maintain parent links.
+
+Challenges and Edge Cases
+- Empty tree / key not found: always check for None before dereferencing; return the unchanged subtree when key is absent.
+- Deleting the root: the same cases apply, but you must return and assign the new root to the external variable; otherwise the caller keeps a stale reference.
+- Duplicates: define a consistent policy (e.g., insert duplicates to the right) and follow it for deletion; one delete removes one occurrence.
+- Two-children pitfall: after copying successor value, you must actually delete the original successor node; otherwise you keep a duplicate.
+- Skewed trees and complexity: a plain BST can degrade to O(N) height on nearly sorted input, making delete O(N). Self-balancing trees (AVL, Red-Black) keep height ~log N, giving O(log N) deletes.
+- Recursion depth: deeply skewed trees can approach recursion limits; an iterative implementation or a balanced tree mitigates this.
+- Comparator/typing consistency: if using custom key types, ensure strict and consistent ordering to avoid violating the invariant.
+
+Correctness and Testing
+- Functional tests: delete a leaf; delete a one-child node; delete a two-child node (including the root); delete a non-existent key; if allowing duplicates, insert several equal keys and delete repeatedly.
+- Structural check: after each delete, an inorder traversal must remain sorted.
+- Edge check: delete current min and max; delete until the tree becomes empty.
+
+Complexity
+- Time: O(h), where h is tree height (O(log N) on balanced trees; O(N) in the worst-case skew).
+- Space: O(h) due to recursion (O(1) if implemented iteratively).
+
+Conclusion
+BST deletion is straightforward in cases with 0 or 1 child and slightly more involved with 2 children via successor/predecessor replacement. A clear duplicate policy, correct pointer updates, and attention to balance/recursion depth yield a robust, correct implementation.
