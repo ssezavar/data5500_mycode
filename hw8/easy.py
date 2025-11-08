@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 
 ############################################################
-# STEP 1 - Define the function
+# define the function
 def count_nodes(graph: nx.Graph) -> int:
     """
     Returns the total number of nodes in the given NetworkX graph.
@@ -20,7 +20,7 @@ def count_nodes(graph: nx.Graph) -> int:
 
 
 ############################################################
-# STEP 2 - Create a sample graph to test the function
+# Create the sample graph 
 currencies = ["usd", "eur", "gbp"]
 
 # Each edge represents an exchange rate between two currencies
@@ -38,14 +38,14 @@ g.add_weighted_edges_from(edges)
 
 
 ############################################################
-# STEP 3 - Call the function and display results
+# Call the function and display results
 num_nodes = count_nodes(g)
 print("All nodes in the graph:", list(g.nodes))
 print("Number of nodes in the graph:", num_nodes)
 
 
 ############################################################
-# STEP 4 - Save the graph visualization
+# Save the graph visualization
 curr_dir = os.path.dirname(__file__)
 graph_visual_fil = curr_dir + "/" + "easy_graph_visual.png"
 
