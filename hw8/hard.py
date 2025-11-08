@@ -12,7 +12,7 @@ from itertools import permutations
 
 
 ############################################################
-# STEP 1: define the function
+# Step 1: define the function
 def count_high_degree_nodes(graph: nx.Graph) -> int:
     """
     Returns the number of nodes in the given NetworkX graph
@@ -22,7 +22,7 @@ def count_high_degree_nodes(graph: nx.Graph) -> int:
 
 
 ############################################################
-# STEP 2: Create a sample graph to test the function
+# Step 2: Create a sample graph to test the function
 currencies = ["usd", "eur", "gbp", "mxn", "rub", "inr"]
 edges = []
 
@@ -36,14 +36,14 @@ g.add_weighted_edges_from(edges)
 
 
 ############################################################
-# STEP 3  call the function and display results
+# step 3  call the function and display results
 count = count_high_degree_nodes(g)
 print("All nodes in the graph:", list(g.nodes))
 print("Number of nodes with degree > 5:", count)
 
 
 ############################################################
-# STEP 4 : Save the graph visualization
+# Step 4 : Save the graph visualization
 curr_dir = os.path.dirname(__file__)
 graph_visual_fil = curr_dir + "/" + "hard_graph_visual.png"
 
