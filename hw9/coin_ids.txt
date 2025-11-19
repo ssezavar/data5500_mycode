@@ -1,0 +1,7 @@
+ethereum
+bitcoin
+litecoin
+ripple
+cardano
+bitcoin-cash
+eos
