@@ -1,0 +1,37 @@
+{
+  "num_pairs": 130,
+  "data_file": "D:\\data_6500\\data5500_mycode\\final_project\\data\\currency_pair_2025.12.13_04.32.txt",
+  "min_factor": 0.9972829544809144,
+  "min_paths": [
+    [
+      "eth",
+      "ltc",
+      "btc",
+      "xlm"
+    ],
+    [
+      "xlm",
+      "btc",
+      "ltc",
+      "eth"
+    ]
+  ],
+  "max_factor": 1.000280203717575,
+  "max_paths": [
+    [
+      "xrp",
+      "xlm",
+      "eos",
+      "bch"
+    ],
+    [
+      "bch",
+      "eos",
+      "xlm",
+      "xrp"
+    ]
+  ],
+  "num_opportunities": 0,
+  "trades_executed": [],
+  "run_utc": "2025-12-13T04:32:45.532623Z"
+}
